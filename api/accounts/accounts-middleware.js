@@ -2,11 +2,12 @@ const Account = require('./accounts-model')
 
 
 exports.checkAccountPayload = (req, res, next) => {
-  // DO YOUR MAGIC
-  // Note: you can either write "manual" validation logic
-  // or use the Yup library (not currently installed)
-  
-  next()
+  const error = { status: 400 }
+  const { name, budget } = req.body
+  if (name === undefined || budget === undefined) {
+    error.message = 'name and budget are required'
+    next(error)
+  }
 }
 
 exports.checkAccountNameUnique = (req, res, next) => {
