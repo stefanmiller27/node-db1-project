@@ -11,14 +11,8 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:id', md.checkAccountId, (req, res, next) => {
- // DO YOUR MAGIC
-  try {
-    res.json('get account by id')
-
-  } catch (err) {
-    next(err)
-  }
+router.get('/:id', md.checkAccountId, async (req, res, next) => {
+  res.json(req.account)
 })
 
 router.post(
